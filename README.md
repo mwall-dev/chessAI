@@ -2,20 +2,24 @@
 
 Python chess AI vs human player.
 
-    
-    - Start with human vs human or do human vs computer with random moves 
-      with moves printed to command line.
-      Use flask and display board. Add a text box and a button to submit move through chess notation.
-
-    - Then with moves printed to web app GUI, use flask and look at geohot quick implementation
-    with button to submit moves vs computer doing random moves.
-
-    - (Java script maybe) Get board and GUI working with basic move logic and turn switiching.
+![alt text](https://github.com/mwall-dev/chessAI/blob/master/chess_cap.jpg?raw=true)
 
 
+    TO DO
+    -----
+    * Fix header dissapearing
+    * Add color to front end
+    * Implement chess.js for legal move checking or just use backend (likely faster to use js).
+    * Fix minimax (best_move not being chosen, value is correct I think).
 
-    Optimisations:
-      - Caching for FEN strings in a map with key, val = fen and other info, valuation.
+
+    Optimisations
+    -----
+    * Caching for FEN strings in a map with key, val = fen and other info, valuation.
       Have a seperate cache for minimising and maximising players.
+    * Opening theory 
+    * Positional valuation (center = more powerful)
+    * Alpha beta pruning 
+
 
 

@@ -3,16 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <title>WallChess</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></link>
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/chessboard-1.0.0.css') }}"></link>
         <script type="text/javascript" src="{{ url_for('static',filename='js/chessboard-1.0.0.js') }}"></script>
         <link rel="shortcut icon" href="{{ url_for('static', filename='img/rook.ico') }}"/></link>
     </head>
+    
+<main>
+    <header>
+        <h1>WallChess</h1>
+        <p id="quote"><i>The blunders are all there on the board, waiting to be made.<br><br>-- Savielly Tartakower</i>
+        </p>
+        
+        <br>
+        <br>
+        <br>
 
     <body>
-        <h1>WallChess</h1>
-        <div id="myBoard" style="width: 400px"></div>
+        <div id="myBoard" style="width: 500px; margin: auto"></div>
         <script type="text/javascript" src="{{ url_for('static',filename='js/scripts.js') }}"></script>
     </body>
+
+</main>
 
 </html>

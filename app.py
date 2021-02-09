@@ -27,9 +27,11 @@ def minimax_root(s, v, depth):
         s.board.push(move)
         value = min(best_val, minimax(s, v, depth - 1))
         s.board.pop()
-        if(value < best_val):
+        if(value <= best_val):
+            best_val = value
             best_move = move
 
+    print("best val:", best_val)
     return best_move
 
 
@@ -50,7 +52,7 @@ def minimax(s, v, depth):
             move_eval = minimax(s, v, depth - 1) 
             s.board.pop()
 
-            if move_eval > max_eval:
+            if move_eval >= max_eval:
                 max_eval = move_eval
 
         return max_eval
@@ -64,7 +66,7 @@ def minimax(s, v, depth):
             move_eval = minimax(s, v, depth - 1) 
             s.board.pop()
 
-            if move_eval < min_eval:
+            if move_eval <= min_eval:
                 min_eval = move_eval
 
         return min_eval
@@ -88,9 +90,11 @@ def move_coordinates():
         print("human moves", move)
         s.board.push_san(move)
         print(s.board.fen())
+
         computer_move = minimax_root(s, v, 3)
         print("computer moves", computer_move)
         s.board.push(computer_move)
+
         print(s.board.fen())
     
     response = app.response_class(
