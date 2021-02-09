@@ -2,7 +2,7 @@
 
 Python chess AI vs human player.
 
-![alt text](https://github.com/mwall-dev/chessAI/blob/master/chess_cap.jpg?raw=false)
+![alt text](https://github.com/mwall-dev/chessAI/blob/master/chess_cap.jpg)
 
 
     TO DO
