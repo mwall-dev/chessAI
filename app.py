@@ -28,7 +28,7 @@ def minimax_root(s, v, depth):
     for x in possible_next_moves:
         move = chess.Move.from_uci(str(x))
         s.board.push(move)
-        value = minimax(s, v, depth - 1)
+        value = minimax(s, v, depth - 1, v.MIN_VAL, v.MAX_VAL)
         s.board.pop()
         if(value <= best_val):
             best_val = value
@@ -48,7 +48,7 @@ def minimax_root(s, v, depth):
 
 states_visited = 0
 
-def minimax(s, v, depth):
+def minimax(s, v, depth, alpha, beta):
     global states_visited
     states_visited+=1
     # Stop at a defined maximum depth (chess decision tree too big!) or if game over.
@@ -59,30 +59,30 @@ def minimax(s, v, depth):
 
     # White is the maximising player, black is the minimizing.
     if turn == chess.WHITE:
-        max_eval = v.MIN_VAL
+        max_eval = v.MIN_VAL + 1
         possible_next_moves = list(s.board.legal_moves)
 
         for move in possible_next_moves:
             s.board.push(move)
-            move_eval = minimax(s, v, depth - 1) 
+            max_eval = max(minimax(s, v, depth - 1, alpha, beta), max_eval) 
             s.board.pop()
-
-            if move_eval >= max_eval:
-                max_eval = move_eval
+            alpha = max(alpha, max_eval)
+            if beta <= alpha:
+                return max_eval
 
         return max_eval
 
     else:
-        min_eval = v.MAX_VAL
+        min_eval = v.MAX_VAL - 1
         possible_next_moves = list(s.board.legal_moves)
 
         for move in possible_next_moves:
             s.board.push(move)
-            move_eval = minimax(s, v, depth - 1) 
+            min_eval = min(minimax(s, v, depth - 1, alpha, beta), min_eval) 
             s.board.pop()
-
-            if move_eval <= min_eval:
-                min_eval = move_eval
+            beta = min(beta, min_eval)
+            if beta <= alpha:
+                return min_eval
 
         return min_eval
 
