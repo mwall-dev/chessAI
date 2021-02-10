@@ -18,6 +18,9 @@ v = Valuator()
 
 # AI is always black to give human the advantage of development.
 def minimax_root(s, v, depth):
+    global states_visited
+    states_visited = 0
+
     possible_next_moves = list(s.board.legal_moves)
     best_val = v.MAX_VAL
     best_move = None
@@ -31,16 +34,23 @@ def minimax_root(s, v, depth):
             best_val = value
             best_move = move
         
-        print("current move", move)
-        print("move_val", value)
-        print("best move ", move)
-        print()
+        #print("current move", move)
+        #print("move_val", value)
+        #print("best move ", move)
+        #print("-------------")
 
+    print("States visited:", states_visited) 
+    print("best move:", best_move)
     print("best val:", best_val)
+    print("----------")
     return best_move
 
 
+states_visited = 0
+
 def minimax(s, v, depth):
+    global states_visited
+    states_visited+=1
     # Stop at a defined maximum depth (chess decision tree too big!) or if game over.
     if(depth == 0  or s.board.is_game_over()):
         return v(s);
@@ -96,8 +106,8 @@ def move_coordinates():
         s.board.push_san(move)
         print(s.board.fen())
 
-        computer_move = minimax_root(s, v, 3)
-        print("computer moves", computer_move)
+        computer_move = minimax_root(s, v, 4)
+        #print("computer moves", computer_move)
         s.board.push(computer_move)
 
         print(s.board.fen())
