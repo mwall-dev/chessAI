@@ -25,11 +25,16 @@ def minimax_root(s, v, depth):
     for x in possible_next_moves:
         move = chess.Move.from_uci(str(x))
         s.board.push(move)
-        value = min(best_val, minimax(s, v, depth - 1))
+        value = minimax(s, v, depth - 1)
         s.board.pop()
         if(value <= best_val):
             best_val = value
             best_move = move
+        
+        print("current move", move)
+        print("move_val", value)
+        print("best move ", move)
+        print()
 
     print("best val:", best_val)
     return best_move

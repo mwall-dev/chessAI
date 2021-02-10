@@ -7,7 +7,7 @@ Python chess AI vs human player.
 
 TO DO
 -----
-* Fix header dissapearing
+* Fix quote dissapearing
 * Add color to front end
 * Implement chess.js for legal move checking or just use backend (likely faster to use js).
 * Fix minimax (best_move not being chosen, value is correct I think).
