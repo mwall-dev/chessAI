@@ -1,25 +1,32 @@
-# chessAI
+# chessAI - A playable chess engine in browser.
 
-Python chess AI vs human player.
+Chess engine/interface created using an implementation of the minimax algorithm with alpha-beta pruning and transposition tables.
 
-![screenshot](chess_cap.jpg)
+See valuator.py for position evaluation.
+
+
+
+![screenshot](chess_cap_new.jpg)
 
 
 TO DO
 -----
+* Add more opening theory and development.
+* Iterative deepening and improved transposition tables
+* Test using lichess API for ELO rating.
+* Optimise minimax efficiency further.
+* Optimise piece-square valuation and piece valuation for opening and middle/endgame.
+* Look into Quiescence search and horizon effect.
+* Look into negamax or MTD(f)
+* Look into Monte Carlo tree search.
+* Look into using bitboards and neural networks
+* Look for possible
 * Fix quote dissapearing
-* Add color to front end
 * Implement chess.js for legal move checking or just use backend (likely faster to use js).
-* Fix minimax (best_move not being chosen, value is correct I think).
 
 
-Optimisations
------
-* Caching for FEN strings in a map with key, val = fen and other info, valuation.
-* Have a seperate cache for minimising and maximising players.
-* Opening theory 
-* Positional valuation (center = more powerful)
-* Alpha beta pruning 
+
+ 
 
 
 
