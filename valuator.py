@@ -77,14 +77,18 @@ class Valuator:
             ]
         }
 
+    cache_misses = 0
+
     def __init__(self):
         self.memoization = {} # Empty dict for later optimisation, 
                               # key,val = FEN + info, valution.
+        
 
     # Make object call with state parameter
     def __call__(self, s):
         key = s.key() # To FEN and other info 
         if key not in self.memoization:
+            self.cache_misses += 1
             self.memoization[key] = self.value(s)
         
         return self.memoization[key]

@@ -19,7 +19,10 @@ v = Valuator()
 # AI is always black to give human the advantage of development.
 def minimax_root(s, v, depth):
     global states_visited
+    global leaves_visited
+    leaves_visited = 0
     states_visited = 0
+    v.cache_misses = 0
 
     possible_next_moves = list(s.board.legal_moves)
     best_val = v.MAX_VAL
@@ -38,21 +41,27 @@ def minimax_root(s, v, depth):
         #print("move_val", value)
         #print("best move ", move)
         #print("-------------")
-
+    print("-----------------------")
+    print("Info")
+    print("-----------------------")
     print("States visited:", states_visited) 
-    print("best move:", best_move)
+    print("leaves visited:", leaves_visited)
+    print("cache hits:",leaves_visited - v.cache_misses)
+    print("Best computer move:", best_move)
     print("best val:", best_val)
-    print("----------")
+    print("------------------------")
     return best_move
 
 
 states_visited = 0
-
+leaves_visited = 0
 def minimax(s, v, depth, alpha, beta):
     global states_visited
+    global leaves_visited
     states_visited+=1
     # Stop at a defined maximum depth (chess decision tree too big!) or if game over.
     if(depth == 0  or s.board.is_game_over()):
+        leaves_visited += 1
         return v(s);
     
     turn = s.board.turn;
@@ -102,15 +111,16 @@ def move_coordinates():
     move = s.board.san(chess.Move(source, target, promotion=chess.QUEEN if promotion else None))
 
     if move is not None and move != "":
-        print("human moves", move)
+        print("Human moves", move)
+        print("Computing... ")
         s.board.push_san(move)
-        print(s.board.fen())
+        #print(s.board.fen())
 
         computer_move = minimax_root(s, v, 4)
         #print("computer moves", computer_move)
         s.board.push(computer_move)
 
-        print(s.board.fen())
+        #print(s.board.fen())
     
     response = app.response_class(
       response=s.board.fen(),
