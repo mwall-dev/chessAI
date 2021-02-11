@@ -22,7 +22,6 @@ TO DO
 * Look into negamax or MTD(f)
 * Look into Monte Carlo tree search.
 * Look into using bitboards and neural networks
-* Look for possible
 * Fix quote dissapearing
 * Implement chess.js for legal move checking or just use backend (likely faster to use js).
 
