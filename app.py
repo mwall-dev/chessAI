@@ -1,6 +1,5 @@
 import chess
 import base64
-import traceback
 from flask import Flask, Response, request, render_template, redirect, url_for
 
 from state import State 

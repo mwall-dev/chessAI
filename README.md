@@ -9,6 +9,8 @@ See valuator.py for position evaluation.
 ![screenshot](chess_cap_new.jpg)
 
 
+
+
 TO DO
 -----
 * Add more opening theory and development.
@@ -25,7 +27,13 @@ TO DO
 * Implement chess.js for legal move checking or just use backend (likely faster to use js).
 
 
-
+Usage
+-----
+```
+pip3 install chess flask 
+# then...
+python3 app.py  # runs webserver on localhost:5000
+```
  
 
 
