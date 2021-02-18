@@ -1,6 +1,6 @@
 import chess
 
-# Wrapper class for chess board
+# Wrapper class for chess board (Good for extendability)
 class State:
     def __init__(self, fen=None):
         if fen is None:
