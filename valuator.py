@@ -1,3 +1,5 @@
+""" Valuator to evaluate board states. """
+
 import chess
 
 class Valuator:
@@ -13,7 +15,7 @@ class Valuator:
             chess.KING: 900}
 
 
-    # Postional values. Use [-square_num] for black.
+    # Postional values. Use [-square_num] for black and subtract value.
     position_values = {
             chess.PAWN: [
                 0, 0, 0, 0, 0, 0, 0, 0,
@@ -80,7 +82,7 @@ class Valuator:
     cache_misses = 0
 
     def __init__(self):
-        self.memoization = {} # Empty dict for later optimisation, 
+        self.memoization = {} # Dict for optimisation, 
                               # key,val = FEN + info, valution.
         
 
@@ -94,8 +96,9 @@ class Valuator:
         return self.memoization[key]
 
 
-    # Value the current state.
     def value(self, s):
+        """ Value the given state argument. """
+        
         b = s.board
 
         # Game over values

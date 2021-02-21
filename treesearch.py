@@ -1,6 +1,15 @@
+""" Module containing various tree searching algorithms """
+
 import chess
-# AI is always black to give human the advantage of development.
+
+
+# Performance statistics
+states_visited = 0
+leaves_visited = 0
+
+
 def minimax_root(s, v, depth, pruning=True):
+    """ Root function for minimax to handle first call and return best move. """
     global states_visited
     global leaves_visited
     leaves_visited = 0
@@ -40,10 +49,10 @@ def minimax_root(s, v, depth, pruning=True):
     return best_move
 
 
-states_visited = 0
-leaves_visited = 0
+
 
 def minimax(s, v, depth, alpha, beta):
+    """ Minimax with alpha-beta pruning. """
     global states_visited
     global leaves_visited
     states_visited+=1
@@ -87,6 +96,7 @@ def minimax(s, v, depth, alpha, beta):
 
 
 def minimax_no_pruning(s, v, depth):
+    """ Minimax with no pruning to demonstrate efficiency of pruning. """
     global states_visited
     global leaves_visited
     states_visited+=1
