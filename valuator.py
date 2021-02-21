@@ -98,7 +98,6 @@ class Valuator:
 
     def value(self, s):
         """ Value the given state argument. """
-        
         b = s.board
 
         # Game over values
@@ -110,8 +109,7 @@ class Valuator:
             else:
                 return 0 
         
-        # Net piece values & positional values
-        # Following sign of other chess engines.
+        # Net piece values & positional values.
         # White is maximising (positive)
         # Black is minimising (negative)
         val = 0.0
