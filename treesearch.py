@@ -129,3 +129,9 @@ def minimax_no_pruning(s, v, depth):
             s.board.pop()
 
         return min_eval
+
+
+
+
+#def bns(s, v, alpha, beta):
+    

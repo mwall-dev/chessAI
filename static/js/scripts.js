@@ -21,7 +21,6 @@ function onDrop(source, target, piece) {
         document.querySelector('p').innerText = 'game over';
     } 
     else {
-        document.querySelector('p').innerText = '';
         board.position(r);
     }
     });
